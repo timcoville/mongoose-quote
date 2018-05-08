@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Survey Form</title>
+    <title>Notable Quotables</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type ="text/javascript">
@@ -20,13 +20,18 @@
         <form action="/quote" method="post">
         <div class="input"><span class="label">Your Name:</span> <input type="text" name="name"></div>
 
-        <div class="input"><span class="label">Comments:</span><br>
-            <textarea name="comment"></textarea>
+        <div class="input"><span class="label">Quote:</span><br>
+            <textarea name="quote"></textarea>
         </div>
         <input class="submit" type='Submit' value="Add to my Quote">
         <button><a href="/quote">Skip to Quotes</a></button>
         </form>
-        
+
+        <% if(messages.quote) { %>
+            <% for (var x of messages.quote) { %>
+                <h3><%= x %></h3>
+            <% } %>
+        <% } %>
     </div>
 </body>
 </html>
